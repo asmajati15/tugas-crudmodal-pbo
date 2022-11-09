@@ -25,6 +25,7 @@ class BeritaController extends Controller
     public function update(Request $request, $id)
     {
         DB::table('berita')->where('kd_berita', $id)->update([
+            // 'kd_berita' => $request->kd_berita,
             'nama_berita' => $request->nama_berita,
         ]);
 

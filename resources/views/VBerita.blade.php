@@ -26,7 +26,8 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $berita->nama_berita }}</td>
             <td>
-                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" data-url="{{ route('berita.update',['id'=>$berita->kd_berita]) }}" data-nama_berita="{{ $berita->nama_berita }}">Update</a>
+                {{-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" data-url="{{ route('berita.update',['id'=>$berita->kd_berita]) }}" data-nama_berita="{{ $berita->nama_berita }}">Update</a> --}}
+                <button onclick="ModalEditBerita({{ $berita->kd_berita }} ,'{{ $berita->nama_berita }}')" class="btn btn-info" >Update</button>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('berita.delete',['id'=>$berita->kd_berita]) }}">Delete</a>
             </td>
         </tr>
@@ -59,6 +60,37 @@
 </div>
 </form>
 
+ <!-- Form Modal Edit Berita -->
+ <form action="{{ route('berita.update',['id'=>$berita->kd_berita]) }}" method="post">
+    @csrf
+<div class="modal fade" id="ModalEditBerita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" >Form Ubah</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="mb-3">
+                <label  class="form-label">Kode Berita</label>
+                <input type="text" class="form-control" name="kd_berita" required>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Nama Berita</label>
+                <input type="text" class="form-control" name="nama_berita"  required>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <input type="submit" class="btn btn-primary" name="ubah" value="Ubah">
+        </div>
+        </div>
+    </div>
+</div>
+</form>
+<!-- Form Modal Edit Berita -->
+
 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" id="modal-content">
@@ -72,6 +104,12 @@
 <script>
     function ModalTambahBerita () {
        $('#ModalTambahBerita').modal('show');
+    }
+
+    function ModalEditBerita ($id,$nama) {
+            $('[name="kd_berita"]').val($id);
+            $('[name="nama_berita"]').val($nama);
+           $('#ModalEditBerita').modal('show');
     }
 
     $('#updateModal').on('shown.bs.modal', function(e) {

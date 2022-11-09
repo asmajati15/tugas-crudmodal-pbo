@@ -30,7 +30,7 @@ Route::prefix('kontak')->group(function () {
 Route::prefix('berita')->group(function () {
     Route::get('/', [BeritaController::class, 'index']);
     Route::post('/add',[BeritaController::class,'add'])->name('berita.add');
-    Route::post('/update/{id}',[BeritaController::class,'update'])->name('berita.update');;
+    Route::post('/edit/{id}',[BeritaController::class,'update'])->name('berita.update');;
     Route::get('/delete/{id}',[BeritaController::class,'delete'])->name('berita.delete');;
 });
 
