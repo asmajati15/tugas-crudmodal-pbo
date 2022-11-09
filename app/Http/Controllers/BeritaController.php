@@ -18,7 +18,7 @@ class BeritaController extends Controller
 			'nama_berita' => $request->nama_berita,
 
 		]);
-		return redirect()->back();
+		return redirect()->back()->with('success', 'Data berhasil ditambahkan!');
  
     }
 
@@ -28,13 +28,13 @@ class BeritaController extends Controller
             'nama_berita' => $request->nama_berita,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dirubah!');
     }
 
     public function delete($id)
     {
         DB::table('berita')->where('kd_berita', $id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }

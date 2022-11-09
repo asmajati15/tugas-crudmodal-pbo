@@ -1,6 +1,13 @@
 @extends('Layout')
 
 @section('Content')
+{{-- @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif --}}
+
 <h2>Table Berita</h2>
 <a href="#" onclick="ModalTambahBerita()" class="btn btn-success my-3"> + Add New Data</a>
 
@@ -90,5 +97,13 @@
             `;
         $('#modal-content').html(html);
     });
+
+    @if(session()->has('success'))
+    Swal.fire(
+    'Success',
+    '{{ session('success') }}',
+    'success'
+    )
+    @endif
 </script>
 @endsection

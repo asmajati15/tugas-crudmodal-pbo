@@ -18,7 +18,7 @@ class KontakController extends Controller
 			'nama_kontak' => $request->nama_kontak,
 
 		]);
-		return redirect()->back();
+		return redirect()->back()->with('success', 'Data berhasil ditambahkan!');
  
     }
 
@@ -28,13 +28,13 @@ class KontakController extends Controller
             'nama_kontak' => $request->nama_kontak,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dirubah!');
     }
 
     public function delete($id)
     {
         DB::table('kontak')->where('kd_kontak', $id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }

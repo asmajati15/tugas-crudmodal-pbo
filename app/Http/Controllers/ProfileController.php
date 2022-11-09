@@ -18,7 +18,7 @@ class ProfileController extends Controller
 			'nama_profile' => $request->nama_profile,
 
 		]);
-		return redirect()->back();
+		return redirect()->back()->with('success', 'Data berhasil ditambahkan!');
  
     }
 
@@ -28,13 +28,13 @@ class ProfileController extends Controller
             'nama_profile' => $request->nama_profile,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dirubah!');
     }
 
     public function delete($id)
     {
         DB::table('profile')->where('kd_profile', $id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }
