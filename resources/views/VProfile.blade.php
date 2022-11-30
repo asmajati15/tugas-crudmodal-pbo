@@ -40,7 +40,7 @@
 
             <div class="mb-3">
                 <label  class="form-label">Nama Profile</label>
-                <textarea name="nama_profile" class="form-control" required></textarea>
+                <input type="text" class="form-control" name="nama_profile"  required>
             </div>
         </div>
         <div class="modal-footer">

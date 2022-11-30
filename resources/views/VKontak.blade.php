@@ -40,7 +40,7 @@
 
             <div class="mb-3">
                 <label  class="form-label">Nama Kontak</label>
-                <textarea name="nama_kontak" class="form-control" required></textarea>
+                <input type="text" class="form-control" name="nama_kontak"  required>
             </div>
         </div>
         <div class="modal-footer">
